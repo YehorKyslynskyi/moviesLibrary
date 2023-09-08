@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 180px;
+  margin: 0 0 0 50px;
+  .navLink {
+    transition: 0.5s ease-out;
+  }
+  .navLink:hover {
+    color: #fec200;
+    transition: 0.5s ease-out;
+  }
+}

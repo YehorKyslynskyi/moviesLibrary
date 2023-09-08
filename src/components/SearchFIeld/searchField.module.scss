@@ -1,0 +1,53 @@
+.box {
+  position: relative;
+  margin: 0 0 0 auto;
+  .input {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    background: linear-gradient(21deg, #fec200, #e3e7eb);
+    transition: all 0.5s ease;
+    padding: 3px 3px 3px 3px;
+    display: inline-block;
+    border: none;
+    border-radius: 9999em;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .input:focus,
+  .input:active,
+  .input:hover {
+    width: 200px;
+    padding: 3px 3px 3px 32px;
+  }
+
+  .activeInput {
+    width: 200px;
+    height: 30px;
+    position: relative;
+    background: linear-gradient(21deg, #fec200, #e3e7eb);
+    transition: all 0.5s ease;
+    padding: 3px 3px 3px 32px;
+    display: inline-block;
+    border: none;
+    border-radius: 9999em;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .searchImage {
+    position: absolute;
+    top: 9px;
+    left: 8px;
+    width: 20px;
+    pointer-events: none;
+  }
+}
+
+/* &:active,
+  &:focus {
+    transition: all 0.5s ease;
+    border: none;
+    background: linear-gradient(21deg, #e3e7eb, #fec200);
+  } */

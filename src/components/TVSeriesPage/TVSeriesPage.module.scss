@@ -1,0 +1,14 @@
+.TVSeriesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 150px 150px 10px 140px;
+  width: calc(100% - 290px);
+
+  .title {
+    font-size: 32px;
+    font-weight: 600;
+    align-self: center;
+  }
+}

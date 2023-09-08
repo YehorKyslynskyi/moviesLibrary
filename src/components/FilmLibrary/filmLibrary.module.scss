@@ -1,0 +1,23 @@
+.filmLibraryContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 150px 150px 10px 140px;
+  width: calc(100% - 290px);
+
+  .filmLibrary {
+    width: 100%;
+    margin: 50px 0 0 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 600;
+    align-self: center;
+  }
+}
