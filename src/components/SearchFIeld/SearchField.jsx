@@ -18,12 +18,20 @@ const SearchField = () => {
   const dispatch = useDispatch();
 
   const [activeSearch, setActiveSearch] = useState(false);
-  const currentPath = window.location.pathname;
+
   const location = useLocation();
+  const isMoviesPage = location.pathname === "/movies";
+  const isTVSeriesPage = location.pathname === "/tvseries";
 
   useEffect(() => {
     dispatch(setSearchMovieQuery(""));
     setActiveSearch(false);
+    if (!isMoviesPage) {
+      dispatch(fetchFoundTVSeries(""));
+    }
+    if (!isTVSeriesPage) {
+      dispatch(fetchFoundMovies(""));
+    }
   }, [location, dispatch]);
   const onChange = (e) => {
     startTransition(() => {
@@ -34,10 +42,10 @@ const SearchField = () => {
 
       dispatch(setSearchMovieQuery(e.target.value));
 
-      if (currentPath === "/movies") {
+      if (isMoviesPage) {
         dispatch(fetchFoundMovies(e.target.value));
       }
-      if (currentPath === "/tvseries") {
+      if (isTVSeriesPage) {
         dispatch(fetchFoundTVSeries(e.target.value));
       }
     });
@@ -45,10 +53,10 @@ const SearchField = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (currentPath === "/movies") {
+    if (isMoviesPage) {
       dispatch(fetchFoundMovies(searchQuery));
     }
-    if (currentPath === "/tvseries") {
+    if (isTVSeriesPage) {
       dispatch(fetchFoundTVSeries(searchQuery));
     }
   };

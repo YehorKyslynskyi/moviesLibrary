@@ -5,6 +5,9 @@ import {
   API_MOVIE_SEARCH,
   API_TV_SEARCH,
   API_TVSERIES_GENRES,
+  API_FIND_BY_ID,
+  API_FIND_BY_ID_PARAMS,
+  API_FIND_TV_BY_ID,
 } from "../../API/API";
 import { movieSlice } from "./movieSlice";
 
@@ -72,5 +75,33 @@ export const setSearchMovieQuery = (query) => async (dispatch) => {
     dispatch(movieSlice.actions.settingSearchMovieQuery(query));
   } catch (e) {
     console.log(e);
+  }
+};
+
+export const fetchMovieById = (id) => async (dispatch) => {
+  try {
+    dispatch(movieSlice.actions.fetching());
+    fetchApiData(API_FIND_BY_ID + id + API_FIND_BY_ID_PARAMS).then(
+      (response) => {
+        dispatch(movieSlice.actions.currentMovieFetchingSuccess(response));
+        /* console.log(response); */
+      }
+    );
+  } catch (e) {
+    dispatch(movieSlice.actions.fetchingError(e.message));
+  }
+};
+
+export const fetchTVSeriesById = (id) => async (dispatch) => {
+  try {
+    dispatch(movieSlice.actions.fetching());
+    fetchApiData(API_FIND_TV_BY_ID + id + API_FIND_BY_ID_PARAMS).then(
+      (response) => {
+        dispatch(movieSlice.actions.currentTVSeriesFetchingSuccess(response));
+        /* console.log(response); */
+      }
+    );
+  } catch (e) {
+    dispatch(movieSlice.actions.fetchingError(e.message));
   }
 };

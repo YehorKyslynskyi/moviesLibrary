@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import titleLogo from "../../images/titlelogo.webp";
-
+import { NavLink } from "react-router-dom";
+import { ROUTES } from "../../routes/routes";
 import styles from "./LibraryItem.module.scss";
 
 const LibraryItem = ({
+  id,
+  isMovie,
   posterPath,
   title,
   voteAverage,
@@ -11,7 +14,13 @@ const LibraryItem = ({
   ganres,
 }) => {
   return (
-    <div className={styles.libraryItem}>
+    <NavLink
+      to={ROUTES.movieFullPage(id)}
+      state={{
+        isMovie: isMovie,
+      }}
+      className={styles.libraryItem}
+    >
       <div className={styles.poster}>
         {posterPath ? (
           <img src={posterPath} alt="poster" />
@@ -37,7 +46,7 @@ const LibraryItem = ({
 
         <div className={styles.genres}>{ganres}</div>
       </div>
-    </div>
+    </NavLink>
   );
 };
 export default LibraryItem;

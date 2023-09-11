@@ -8,6 +8,7 @@ export const movieSlice = createSlice({
     tvSeriesGenres: [],
     foundMovies: [],
     foundTVSeries: [],
+    currentFullMoviePage: [],
     searchMovieQuery: "",
     isLoading: false,
     error: "",
@@ -54,6 +55,17 @@ export const movieSlice = createSlice({
 
     settingSearchMovieQuery(state, action) {
       state.searchMovieQuery = action.payload;
+    },
+
+    currentMovieFetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = "";
+      state.currentFullMoviePage = action.payload;
+    },
+    currentTVSeriesFetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = "";
+      state.currentFullMoviePage = action.payload;
     },
   },
 });

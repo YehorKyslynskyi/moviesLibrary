@@ -26,6 +26,7 @@ const MoviesPage = () => {
   const formatMovies = (movies) => {
     return movies.map((movie) => ({
       ...movie,
+      isMovie: true,
       posterPath:
         movie.poster_path === null || undefined || ""
           ? null

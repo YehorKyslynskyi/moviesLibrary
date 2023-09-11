@@ -19,6 +19,7 @@ const TVSeriesPage = () => {
   const formatTVSeries = (foundTVSeries) => {
     return foundTVSeries.map((TVSeries) => ({
       ...TVSeries,
+      isMovie: false,
       title: TVSeries.name,
       posterPath:
         TVSeries.poster_path === null || undefined || ""

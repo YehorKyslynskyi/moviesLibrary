@@ -22,6 +22,12 @@ export const API_MOVIE_SEARCH =
 export const API_TV_SEARCH =
   "/search/tv?include_adult=false&language=en-US&page=1&query=";
 
+export const API_FIND_BY_ID = "/movie/";
+
+export const API_FIND_BY_ID_PARAMS = "?language=en-US";
+
+export const API_FIND_TV_BY_ID = "/tv/";
+
 export const fetchApiData = async (url, params) => {
   try {
     const data = await axios.get(BASE_URL + url, {

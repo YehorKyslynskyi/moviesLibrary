@@ -9,13 +9,16 @@ import { ROUTES } from "../../routes/routes";
 
 const Header = () => {
   const currentPath = window.location.pathname;
+  const isSearchAvailable =
+    currentPath === "/movies" || currentPath === "/tvseries";
+
   return (
     <header>
       <NavLink className={styles.logo} to={ROUTES.mainPage}>
         <img src={titleLogo} alt="titleLogo" />
       </NavLink>
       <Navigation />
-      {currentPath === "/" ? <></> : <SearchField />}
+      {isSearchAvailable ? <SearchField /> : <></>}
     </header>
   );
 };
