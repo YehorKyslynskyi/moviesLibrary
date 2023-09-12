@@ -9,6 +9,7 @@ const ListOfMovies = ({ movies }) => {
       <AnimatePresence>
         {movies.map((movie) => (
           <motion.div
+            className={styles.motion}
             key={movie.id}
             layout
             initial={{ opacity: 0 }}
