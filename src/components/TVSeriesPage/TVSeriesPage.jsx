@@ -4,6 +4,7 @@ import ListOfMovies from "../ListOfMovies/ListOfMovies";
 import { API_IMG } from "../../API/API";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./TVSeriesPage.module.scss";
+import ContentWrapper from "../helpers/ContentWrapper/ContentWrapper";
 
 const TVSeriesPage = () => {
   const dispatch = useDispatch();
@@ -45,10 +46,10 @@ const TVSeriesPage = () => {
 
   const formattedTVSeries = useMemo(() => formatTVSeries(foundTVSeries));
   return (
-    <div className={styles.TVSeriesContainer}>
+    <ContentWrapper>
       <div className={styles.title}>Found TV Series</div>
       <ListOfMovies movies={formattedTVSeries} />
-    </div>
+    </ContentWrapper>
   );
 };
 

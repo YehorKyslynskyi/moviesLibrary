@@ -6,6 +6,10 @@ import {
 import { API_IMG } from "../../API/API";
 import { useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Loader from "../helpers/Loader/Loader";
+import titleLogo from "../../images/titlelogo.webp";
+import ContentWrapper from "../helpers/ContentWrapper/ContentWrapper";
+
 import styles from "./movieFullPage.module.scss";
 
 const MovieFullPage = () => {
@@ -16,6 +20,7 @@ const MovieFullPage = () => {
   const currentMovie = useSelector(
     (state) => state.movies.currentFullMoviePage
   );
+  const isLoading = useSelector((state) => state.movies.isLoading);
 
   useEffect(() => {
     if (isMovie) {
@@ -24,46 +29,97 @@ const MovieFullPage = () => {
       dispatch(fetchTVSeriesById(params.movieId));
     }
   }, [dispatch]);
-
   console.log(currentMovie);
+  console.log(currentMovie.genres);
+
+  const formatCurrentMovie = () => {
+    return {
+      poster: currentMovie.poster_path
+        ? API_IMG + currentMovie.poster_path
+        : null,
+      title: currentMovie.original_title || currentMovie.name,
+      releaseDate:
+        new Date(Date.parse(currentMovie.release_date)).getFullYear() ||
+        new Date(Date.parse(currentMovie.first_air_date)).getFullYear(),
+      tagline: currentMovie.tagline || null,
+      overview: currentMovie.overview || null,
+      genres: formatGanres(currentMovie.genres)?.join(", ") || null,
+    };
+  };
 
   const formatGanres = (genres) => {
-    return genres.map((genre) => genre.name);
+    return genres?.map((genre) => genre.name);
   };
 
-  const formatedCurrentMovie = {
-    poster: API_IMG + currentMovie.poster_path,
-    title: currentMovie.original_title || currentMovie.name,
-    releaseDate:
-      new Date(Date.parse(currentMovie.release_date)).getFullYear() ||
-      new Date(Date.parse(currentMovie.first_air_date)).getFullYear(),
-    tagline: currentMovie.tagline,
-    overview: currentMovie.overview,
-    genres: formatGanres(currentMovie.genres).join(", "),
-  };
+  const formatedCurrentMovie = useMemo(() => formatCurrentMovie());
 
   return (
-    <div className={styles.movieFullPage}>
-      <div className={styles.poster}>
-        <img src={formatedCurrentMovie.poster} alt="poster" />
-      </div>
-      <div className={styles.mainDescriptionWrapper}>
-        <div className={styles.mainDescription}>
-          <div className={styles.title}>
-            {formatedCurrentMovie.title}
-            <span>({formatedCurrentMovie.releaseDate})</span>
-          </div>
-          <div className={styles.genres}>{formatedCurrentMovie.genres}</div>
-          <div className={styles.info}>
-            <div className={styles.tagline}>{formatedCurrentMovie.tagline}</div>
-            <div className={styles.overviewTitle}>Description</div>
-            <div className={styles.overview}>
-              {formatedCurrentMovie.overview}
-            </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div
+          className={styles.backgroundImg}
+          style={{ backgroundImage: `url(${formatedCurrentMovie?.poster})` }}
+        >
+          <div className={styles.customeBg}>
+            <ContentWrapper className={styles.movieFullPageWrapper}>
+              <div className={styles.movieFullPage}>
+                <div className={styles.poster}>
+                  {formatedCurrentMovie.poster ? (
+                    <img src={formatedCurrentMovie.poster} alt="poster" />
+                  ) : (
+                    <img
+                      className={styles.altLogo}
+                      src={titleLogo}
+                      alt="titleLogo"
+                    />
+                  )}
+                </div>
+                <div className={styles.mainDescriptionWrapper}>
+                  <div className={styles.mainDescription}>
+                    <div className={styles.title}>
+                      {formatedCurrentMovie.title}
+                      <span>({formatedCurrentMovie.releaseDate})</span>
+                    </div>
+
+                    {formatedCurrentMovie.genres ? (
+                      <div className={styles.genres}>
+                        {formatedCurrentMovie.genres}
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+
+                    <div className={styles.info}>
+                      {formatedCurrentMovie.tagline ? (
+                        <div className={styles.tagline}>
+                          {formatedCurrentMovie.tagline}
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                      {formatedCurrentMovie.overview ? (
+                        <div className={styles.overviewTitle}>Description</div>
+                      ) : (
+                        <></>
+                      )}
+                      {formatedCurrentMovie.overview ? (
+                        <div className={styles.overview}>
+                          {formatedCurrentMovie.overview}
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ContentWrapper>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 export default MovieFullPage;

@@ -8,13 +8,14 @@ header {
   display: flex;
   justify-content: flex-start;
   padding: 10px 150px 10px 140px;
-  width: calc(100% - 290px);
+  width: calc(100vw - 290px);
   background-color: #010101;
   color: white;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   font-size: 18px;
+  height: 105px;
 
   .logo {
     width: 100px;

@@ -8,6 +8,7 @@ import {
 } from "../../redux/movies/actionCreators";
 
 import styles from "./moviesPage.module.scss";
+import ContentWrapper from "../helpers/ContentWrapper/ContentWrapper";
 
 const MoviesPage = () => {
   const isHomePage = window.location.pathname === "/";
@@ -52,12 +53,12 @@ const MoviesPage = () => {
   const formattedMovies = useMemo(() => formatMovies(movies));
 
   return (
-    <div className={styles.popularMoviesContainer}>
+    <ContentWrapper>
       <div className={styles.title}>
         {isHomePage ? "Popular Movies" : "Found Movies"}
       </div>
       <ListOfMovies movies={formattedMovies} />
-    </div>
+    </ContentWrapper>
   );
 };
 
