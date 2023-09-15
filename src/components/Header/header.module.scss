@@ -2,27 +2,37 @@ header {
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 2;
+  z-index: 10;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   display: flex;
-  justify-content: flex-start;
-  padding: 10px 150px 10px 140px;
-  width: calc(100vw - 290px);
-  background-color: #010101;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  width: 100vw;
+  background-color: black;
   color: white;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   font-size: 18px;
-  height: 105px;
+  height: 65px;
 
-  .logo {
-    width: 100px;
-
-    img {
-      width: 100%;
+  .content {
+    width: 100%;
+    max-width: 1320px;
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .logo {
+      width: 60px;
       height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

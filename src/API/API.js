@@ -9,13 +9,19 @@ const headers = {
   accept: "application/json",
 };
 
-export const API_MOVIE = "/movie/popular";
+export const API_POPULAR_MOVIE = "/movie/popular";
 
-export const API_IMG = "https://image.tmdb.org/t/p/w500";
+export const API_UPCOMING_MOVIE = "/movie/upcoming";
+
+export const API_IMG = "https://image.tmdb.org/t/p";
+
+export const API_IMG_POSTER_PARAMS = "/w500";
+
+export const API_IMG_ORIGINAL_PARAMS = "/original";
 
 export const API_MOVIE_GENRES = "/genre/movie/list";
 
-export const API_TVSERIES_GENRES = "/genre/tv/list";
+export const API_TV_SERIES_GENRES = "/genre/tv/list";
 
 export const API_MOVIE_SEARCH =
   "/search/movie?langauge=en-US&page=1&include_adult=false&query=";

@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const movieSlice = createSlice({
   name: "movies",
   initialState: {
-    movies: [],
+    popularMovies: [],
+    upcomingMovies: [],
     moviesGenres: [],
     tvSeriesGenres: [],
     foundMovies: [],
@@ -23,10 +24,16 @@ export const movieSlice = createSlice({
       state.error = action.payload;
     },
 
-    moviesFetchingSuccess(state, action) {
+    popularMoviesFetchingSuccess(state, action) {
       state.isLoading = false;
       state.error = "";
-      state.movies = action.payload;
+      state.popularMovies = action.payload;
+    },
+
+    upcomingMoviesFetchingSuccess(state, action) {
+      state.isLoading = false;
+      state.error = "";
+      state.upcomingMovies = action.payload;
     },
 
     moviesGenresFetchingSuccess(state, action) {

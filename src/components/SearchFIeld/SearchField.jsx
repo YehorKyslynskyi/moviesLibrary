@@ -2,7 +2,6 @@ import React, { useState, useTransition, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchFoundMovies,
-  fetchMovies,
   setSearchMovieQuery,
   fetchFoundTVSeries,
 } from "../../redux/movies/actionCreators";
@@ -11,7 +10,7 @@ import { useLocation } from "react-router-dom";
 import styles from "./searchField.module.scss";
 
 const SearchField = () => {
-  const [isPaending, startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
   const foundMovies = useSelector((state) => state.movies.foundMovies);
   const movies = useSelector((state) => state.movies.movies);
   const searchQuery = useSelector((state) => state.movies.searchMovieQuery);

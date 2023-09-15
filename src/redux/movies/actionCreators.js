@@ -1,21 +1,37 @@
 import {
-  API_MOVIE,
+  API_POPULAR_MOVIE,
+  API_UPCOMING_MOVIE,
   API_MOVIE_GENRES,
   fetchApiData,
   API_MOVIE_SEARCH,
   API_TV_SEARCH,
-  API_TVSERIES_GENRES,
+  API_TV_SERIES_GENRES,
   API_FIND_BY_ID,
   API_FIND_BY_ID_PARAMS,
   API_FIND_TV_BY_ID,
 } from "../../API/API";
 import { movieSlice } from "./movieSlice";
 
-export const fetchMovies = () => async (dispatch) => {
+export const fetchPopularMovies = () => async (dispatch) => {
   try {
     dispatch(movieSlice.actions.fetching());
-    fetchApiData(API_MOVIE).then((response) => {
-      dispatch(movieSlice.actions.moviesFetchingSuccess(response.results));
+    fetchApiData(API_POPULAR_MOVIE).then((response) => {
+      dispatch(
+        movieSlice.actions.popularMoviesFetchingSuccess(response.results)
+      );
+    });
+  } catch (e) {
+    dispatch(movieSlice.actions.fetchingError(e.message));
+  }
+};
+
+export const fetchUpcomingMovies = () => async (dispatch) => {
+  try {
+    dispatch(movieSlice.actions.fetching());
+    fetchApiData(API_UPCOMING_MOVIE).then((response) => {
+      dispatch(
+        movieSlice.actions.upcomingMoviesFetchingSuccess(response.results)
+      );
     });
   } catch (e) {
     dispatch(movieSlice.actions.fetchingError(e.message));
@@ -36,7 +52,7 @@ export const fetchMovieGenres = () => async (dispatch) => {
 export const fetchTVSeriesGenres = () => async (dispatch) => {
   try {
     dispatch(movieSlice.actions.fetching());
-    fetchApiData(API_TVSERIES_GENRES).then((response) => {
+    fetchApiData(API_TV_SERIES_GENRES).then((response) => {
       dispatch(
         movieSlice.actions.tvSeriesGenresFetchingSuccess(response.genres)
       );

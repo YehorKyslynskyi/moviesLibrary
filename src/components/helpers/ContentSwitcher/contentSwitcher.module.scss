@@ -1,0 +1,49 @@
+.wrapper {
+  width: 100%;
+  padding: 0 15px;
+}
+.contentSwitcher {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  margin: 20px 0 0 15px;
+  background: rgba(254, 194, 0, 0.1);
+  border-radius: 10px;
+  width: fit-content;
+
+  @mixin button {
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: rgba(254, 194, 0, 0.4);
+    transition: 0.5s all ease;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .popularMovies {
+    @include button;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .activePopularMovies {
+    @include button;
+    border-radius: 10px 0 0 10px;
+    background-color: rgb(254, 194, 0);
+    color: rgba(0, 0, 0, 1);
+  }
+
+  .upcomingMovies {
+    @include button;
+    border-radius: 0px 10px 10px 0;
+  }
+
+  .activeUpcomingMovies {
+    @include button;
+    border-radius: 0px 10px 10px 0;
+    background-color: rgb(254, 194, 0);
+    color: rgba(0, 0, 0, 1);
+  }
+}

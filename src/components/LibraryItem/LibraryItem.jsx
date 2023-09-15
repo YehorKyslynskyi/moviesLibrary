@@ -11,7 +11,7 @@ const LibraryItem = ({
   title,
   voteAverage,
   releaseDate,
-  ganres,
+  genres,
 }) => {
   return (
     <NavLink
@@ -44,7 +44,7 @@ const LibraryItem = ({
           </div>
         </div>
 
-        <div className={styles.genres}>{ganres}</div>
+        <div className={styles.genres}>{genres}</div>
       </div>
     </NavLink>
   );

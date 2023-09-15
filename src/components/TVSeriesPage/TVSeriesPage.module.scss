@@ -1,6 +1,14 @@
-.title {
-  font-size: 32px;
-  font-weight: 600;
-  align-self: center;
-  margin-top: 20px;
+.shadowWrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
+  min-width: 100%;
+  min-height: calc(100vh - 85px);
+  .title {
+    font-size: 32px;
+    font-weight: 600;
+    align-self: center;
+    margin-top: 20px;
+  }
 }

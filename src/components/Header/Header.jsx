@@ -14,11 +14,13 @@ const Header = () => {
 
   return (
     <header>
-      <NavLink className={styles.logo} to={ROUTES.mainPage}>
-        <img src={titleLogo} alt="titleLogo" />
-      </NavLink>
-      <Navigation />
-      {isSearchAvailable ? <SearchField /> : <></>}
+      <div className={styles.content}>
+        <NavLink className={styles.logo} to={ROUTES.mainPage}>
+          <img src={titleLogo} alt="titleLogo" />
+        </NavLink>
+        <Navigation />
+        {isSearchAvailable ? <SearchField /> : <></>}
+      </div>
     </header>
   );
 };
