@@ -7,11 +7,11 @@ import {
   fetchMovieGenres,
   fetchUpcomingMovies,
 } from "../../redux/movies/actionCreators";
-
-import styles from "./moviesPage.module.scss";
 import ContentWrapper from "../helpers/ContentWrapper/ContentWrapper";
 import ContentSwitcher from "../helpers/ContentSwitcher/ContentSwitcher";
 
+import styles from "./moviesPage.module.scss";
+import SearchArrow from "../helpers/SearchArrow/SearchArrow";
 const MoviesPage = () => {
   const isHomePage = window.location.pathname === "/";
   const dispatch = useDispatch();
@@ -72,8 +72,10 @@ const MoviesPage = () => {
             setActiveButton={setActiveButton}
             isPopularMovies={isPopularMovies}
           ></ContentSwitcher>
-        ) : (
+        ) : movies.length ? (
           <div className={styles.title}>Found Movies</div>
+        ) : (
+          <SearchArrow>Start searching for a movie</SearchArrow>
         )}
 
         <ListOfMovies movies={formattedMovies} />

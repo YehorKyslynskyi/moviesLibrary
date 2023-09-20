@@ -5,6 +5,7 @@ import { API_IMG, API_IMG_POSTER_PARAMS } from "../../API/API";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./TVSeriesPage.module.scss";
 import ContentWrapper from "../helpers/ContentWrapper/ContentWrapper";
+import SearchArrow from "../helpers/SearchArrow/SearchArrow";
 
 const TVSeriesPage = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,12 @@ const TVSeriesPage = () => {
   return (
     <ContentWrapper>
       <div className={styles.shadowWrapper}>
-        <div className={styles.title}>Found TV Series</div>
+        {foundTVSeries.length ? (
+          <div className={styles.title}>Found TV Series</div>
+        ) : (
+          <SearchArrow>Start searching for a TV Series</SearchArrow>
+        )}
+
         <ListOfMovies movies={formattedTVSeries} />
       </div>
     </ContentWrapper>
